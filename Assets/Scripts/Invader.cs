@@ -18,7 +18,13 @@ public class Invader : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = animationSprites[0];
+
+        if(animationSprites != null && animationSprites.Length > 0){
+            spriteRenderer.sprite = animationSprites[0];
+        }
+        else{
+            Debug.LogError("deu ruim");
+        }
     }
 
     private void Start()
@@ -41,7 +47,11 @@ public class Invader : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
-            this.killed.Invoke();
+
+            if(killed != null){
+                this.killed.Invoke();
+            }
+            
             this.gameObject.SetActive(false);
             //GameManager.Instance.OnInvaderKilled(this);
         }

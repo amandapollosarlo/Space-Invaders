@@ -1,18 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    TextMeshProUGUI scoreText;
+    private int score = 0;
+
     void Start()
     {
-        
+        UpdateScoreText();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddScore(int points)
     {
-        
+        score += points;
+        UpdateScoreText();
+    }
+
+    void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + this.score();
     }
 }

@@ -23,6 +23,13 @@ public class Invaders : MonoBehaviour
 
     private Vector3 _direction = Vector2.right;
 
+    private void InvaderKilled(){
+
+        this.amountKilled++;
+        GameManager.Instance.AddScore(invader.score); // Assuming you have GameManager.Instance properly implemented
+    
+    }
+
     private void Awake()
     {
         for (int row = 0; row < this.rows; row ++)
